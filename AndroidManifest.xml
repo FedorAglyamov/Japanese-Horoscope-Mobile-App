@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.theatomicpineapple.chinesehoroscopes">
+    package="com.theatomicpineapple.japanesehoroscope">
 
     <application
         android:allowBackup="true"
@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ChineseHoroscope"
-            android:label="@string/title_activity_chinese_horoscope"
+            android:name=".JapaneseHoroscope"
+            android:label="@string/title_activity_japanese_horoscope"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.theatomicpineapple.chinesehoroscopes.MainActivity" />
+                android:value="com.theatomicpineapple.japanesehoroscopes.MainActivity" />
         </activity>
         <activity
             android:name=".Translation"
@@ -34,7 +34,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.theatomicpineapple.chinesehoroscopes.MainActivity" />
+                android:value="com.theatomicpineapple.japanesehoroscopes.MainActivity" />
         </activity>
     </application>
 
