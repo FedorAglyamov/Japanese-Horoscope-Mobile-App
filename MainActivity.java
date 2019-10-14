@@ -23,33 +23,37 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        
+        // Set up layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /*
-        Spinner months_spin = (Spinner) findViewById(R.id.months_array);
-        ArrayAdapter<CharSequence> months_adapter = ArrayAdapter.createFromResource(this, R.array.months_array, android.R.layout.simple_spinner_item);
-        months_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        months_spin.setAdapter(months_adapter);*/
+        
     }
 
-
+    // Analyze birthday passed by user
     public void sendBDay(View view){
+        
+        // Get birthday passed by user
         Intent intent = new Intent(this, JapaneseHoroscope.class);
         EditText month = (EditText) findViewById(R.id.month);
         EditText date = (EditText) findViewById(R.id.date);
         EditText year = (EditText) findViewById(R.id.year);
+        
+        // Store birthday date
         String months = month.getText().toString();
         String dates = date.getText().toString();
         String years = year.getText().toString();
+        
+        // Send birthday to be translated into horoscope
         Bundle extras = new Bundle();
         extras.putString(MONTH, months);
         extras.putString(DATE, dates);
         extras.putString(YEAR, years);
         intent.putExtras(extras);
         startActivity(intent);
+        
     }
 
     @Override
