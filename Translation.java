@@ -1,4 +1,4 @@
-package com.theatomicpineapple.chinesehoroscope;
+package com.theatomicpineapple.japanesehoroscope;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
