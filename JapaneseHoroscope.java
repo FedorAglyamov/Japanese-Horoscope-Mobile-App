@@ -17,19 +17,23 @@ public class ChineseHoroscope extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        
+        // Set the layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_japanese_horoscope);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        
+        // Get user's input
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String months = extras.getString(MainActivity.MONTH);
         String days = extras.getString(MainActivity.DATE);
         String years = extras.getString(MainActivity.YEAR);
-
+        
+        // Initiate vars
         String zodiacNm = "NOT VALID";
         String zodiacLuck = "NOT VALID";
         String zodiacStngandWeak = "NOT VALID";
@@ -40,7 +44,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         int month = 0;
         years = years.replace(" ", "");
         int year = Integer.parseInt(years.replace("年", ""));
-
+        
+        // Determine what day person was born on
         if (days.equals("一日")){
             day = 1;
         }if (days.equals("二日")){
@@ -105,8 +110,7 @@ public class ChineseHoroscope extends AppCompatActivity {
             day = 31;
         }
 
-        /////////////////////////////////////
-
+        // Determine what month the person was born in
         if (months.equals("一月")){
             month = 1;
         }if (months.equals("二月")){
@@ -132,9 +136,12 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if (months.equals("十二月")){
             month = 12;
         }
-
-        /////////////////////////////////////
-
+        
+        // Determine relevant zodiac based on Japanese imperial calendar
+        // INSANELY LONG IF STAEMENT CHAIN because of difficulty converting from Gregorian to imperial calendar
+        // (Also, I did this when I was very early on in my "coding career")
+        
+        // Check if zodiac is rat/mouse
         if ((year == 1912 && month > 2) || (year == 1912 && month == 2 && day >= 18)){
             zodiac = "鼠";
         }if ((year == 1913 && month < 2) || (year == 1913 && month == 2 && day < 5)){
@@ -184,7 +191,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2045 && month < 2) || (year == 2045 && month == 2 && day < 16)){
             zodiac = "鼠";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is bull
         if ((year == 1913 && month > 2) || (year == 1913 && month == 2 && day >= 6)){
             zodiac = "雄牛";
         }if ((year == 1914 && month < 1) || (year == 1914 && month == 1 && day < 25)){
@@ -234,7 +242,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2046 && month < 2) || (year == 2046 && month == 2 && day < 5)){
             zodiac = "雄牛";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is tiger
         if ((year == 1914 && month > 1) || (year == 1914 && month == 1 && day >= 26)){
             zodiac = "虎";
         }if ((year == 1915 && month < 2) || (year == 1915 && month == 2 && day < 13)){
@@ -284,7 +293,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2047 && month < 1) || (year == 2047 && month == 1 && day < 25)){
             zodiac = "虎";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is rabbit
         if ((year == 1915 && month > 2) || (year == 1915 && month == 2 && day >= 14)){
             zodiac = "兎";
         }if ((year == 1916 && month < 2) || (year == 1916 && month == 2 && day < 2)){
@@ -334,7 +344,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2048 && month < 2) || (year == 2048 && month == 2 && day < 13)){
             zodiac = "兎";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is dragon
         if ((year == 1916 && month > 2) || (year == 1916 && month == 2 && day >= 3)){
             zodiac = "竜";
         }if ((year == 1917 && month < 1) || (year == 1917 && month == 1 && day < 22)){
@@ -384,7 +395,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2049 && month < 2) || (year == 2049 && month == 2 && day < 1)){
             zodiac = "竜";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is snake
         if ((year == 1917 && month > 1) || (year == 1917 && month == 1 && day >= 23)){
             zodiac = "蛇";
         }if ((year == 1918 && month < 2) || (year == 1918 && month == 2 && day < 10)){
@@ -434,7 +446,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2050 && month < 1) || (year == 2050 && month == 1 && day < 22)){
             zodiac = "蛇";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is horse
         if ((year == 1918 && month > 2) || (year == 1918 && month == 2 && day >= 11)){
             zodiac = "馬";
         }if ((year == 1919 && month < 1) || (year == 1919 && month == 1 && day < 31)){
@@ -484,7 +497,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2051 && month < 2) || (year == 2051 && month == 2 && day < 10)){
             zodiac = "馬";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is goat
         if ((year == 1919 && month > 2) || (year == 1919 && month == 2 && day >= 1)){
             zodiac = "ヤギ";
         }if ((year == 1920 && month < 2) || (year == 1920 && month == 2 && day < 19)){
@@ -534,7 +548,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2052 && month < 1) || (year == 2052 && month == 1 && day < 31)){
             zodiac = "ヤギ";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is monkey
         if ((year == 1920 && month > 2) || (year == 1920 && month == 2 && day >= 20)){
             zodiac = "猿";
         }if ((year == 1921 && month < 2) || (year == 1921 && month == 2 && day < 7)){
@@ -584,7 +599,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2053 && month < 2) || (year == 2053 && month == 2 && day < 18)){
             zodiac = "猿";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is rooster
         if ((year == 1921 && month > 2) || (year == 1921 && month == 2 && day >= 8)){
             zodiac = "おんどり";
         }if ((year == 1922 && month < 1) || (year == 1922 && month == 1 && day < 27)){
@@ -634,7 +650,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2054 && month < 2) || (year == 2054 && month == 2 && day < 7)){
             zodiac = "おんどり";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is dog
         if ((year == 1922 && month > 1) || (year == 1922 && month == 1 && day >= 28)){
             zodiac = "犬";
         }if ((year == 1923 && month < 2) || (year == 1923 && month == 2 && day < 15)){
@@ -684,7 +701,8 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2055 && month < 1) || (year == 2055 && month == 1 && day < 27)){
             zodiac = "犬";
         }
-//////////////////////////////////////////
+        
+        // Check if zodiac is pig
         if ((year == 1923 && month > 2) || (year == 1923 && month == 2 && day >= 16)){
             zodiac = "豚";
         }if ((year == 1924 && month < 2) || (year == 1924 && month == 2 && day < 4)){
@@ -734,9 +752,9 @@ public class ChineseHoroscope extends AppCompatActivity {
         }if ((year == 2056 && month < 2) || (year == 2056 && month == 2 && day < 14)){
             zodiac = "豚";
         }
+        
 
-//////////////////////////////////////////
-
+        // Account for different imperial eras
         if (year >= 1912 && year < 1926){
             eraYear =  Integer.toString(year - 1911);
             era = "年号: " + "大正 (たいしょう) " + eraYear;
@@ -747,12 +765,11 @@ public class ChineseHoroscope extends AppCompatActivity {
             eraYear =  Integer.toString(year - 1988);
             era = "年号: " + "平成 (へいせい) " + eraYear;
         }
-
-//////////////////////////////////////////
-
-        System.out.println(zodiac);
-
+        
+        
+        // Select horoscope text based on user's horoscope
         if (zodiac.equals("鼠")){
+            // Zodiac is rat/mouse
             zodiacNm = "鼠 (ねずみ)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 二, 三\n" + "ラッキーカラー: 金, あお, みどり\n" + "吉方 (えほう): 南東, 北東";
             zodiacStngandWeak =
@@ -762,8 +779,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん):\n" +
                     "臆病な (おくびょうな), 頑固な (がんこな), ぐちっぽい\n" +
                     "Timid, stubborn, querulous";
-        }
-        if (zodiac.equals("雄牛")){
+        } else if (zodiac.equals("雄牛")){
+            // Zodiac is bull
             zodiacNm = "雄牛 (おすうし)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 一, 九\n" + "ラッキーカラー: あか, あお, むらさき\n" + "吉方 (えほう): 南東, 南, 北";
             zodiacStngandWeak =
@@ -773,8 +790,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "頑固な(がんこな), 口がきけません, 遠く (とうく) \n" +
                     "Obstinate, inarticulate, distant";
-        }
-        if (zodiac.equals("虎")){
+        } else if (zodiac.equals("虎")){
+            // Zodiac is tiger
             zodiacNm = "虎 (とら)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 一, 三, 四\n" + "ラッキーカラー: ねずみ/はい, あお, しろ, オレンジ\n" + "吉方 (えほう): 南, 東, 南東";
             zodiacStngandWeak =
@@ -784,8 +801,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "傲慢な (ごうまんな), 気が短いです (きがみじかいです), 性急な (性急な) \n" +
                     "Arrogant, short-tempered, hasty";
-        }
-        if (zodiac.equals("兎")){
+        } else if (zodiac.equals("兎")){
+            // Zodiac is rabbit
             zodiacNm = "兎 (うさぎ)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 三, 四, 九\n" + "ラッキーカラー: あか, あお, ピンク / もも, むらさき\n" + "吉方 (えほう): 南東, 南";
             zodiacStngandWeak =
@@ -795,8 +812,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "ためらって, 頑固な (がんこな), 臆病な (おくびょうな) \n" +
                     "Hesitant, stubborn, timid";
-        }
-        if (zodiac.equals("竜")){
+        } else if (zodiac.equals("竜")){
+            // Zodiac is dragon
             zodiacNm = "竜 (りゅう)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 一, 七 , 六\n" + "ラッキーカラー: 金, 銀, しらがらさき\n" + "吉方 (えほう): 西, 北, 北西";
             zodiacStngandWeak =
@@ -806,8 +823,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "エキセントリック, 偏狭な (へんきょうな), 非現実的 (ひげんじつてき) \n" +
                     "Eccentric, intolerant, unrealistic";
-        }
-        if (zodiac.equals("蛇")){
+        } else if (zodiac.equals("蛇")){
+            // Zodiac is snake
             zodiacNm = "蛇 (ヘビ)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 二, 八, 九\n" + "ラッキーカラー: あか, きいろ, くろ\n" + "吉方 (えほう): 北東, 南西, 南";
             zodiacStngandWeak =
@@ -817,8 +834,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "嫉妬深いです (しっとぶかいです), 狡い (こすい),  気まぐれな \n" +
                     "Jealous, sly, fickle";
-        }
-        if (zodiac.equals("馬")){
+        } else if (zodiac.equals("馬")){
+            // Zodiac is horse
             zodiacNm = "馬 (うま)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 二, 三, 七\n" + "ラッキーカラー: ちゃい,  きいろ, むらさき\n" + "吉方 (えほう): 北東, 南西, 北西";
             zodiacStngandWeak =
@@ -828,8 +845,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "お金を費やして大好き (おかねをついやしてだいすき), 露骨 (ろこつ), 持続性の欠如 (じぞくせいのけつじょ) \n" +
                     "Love spending money, frank, lack of persistence";
-        }
-        if (zodiac.equals("ヤギ")){
+        } else if (zodiac.equals("ヤギ")){
+            // Zodiac is goat
             zodiacNm = "山羊 (ヤギ)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 三, 四, 九\n" + "ラッキーカラー: みどり, あか, むらさき\n" + "吉方 (えほう): 東, 南東, 南";
             zodiacStngandWeak =
@@ -839,8 +856,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "優柔不断な (ゆうじゅうふだんな), 臆病な (おくびょうな), 誇らしい (ほこらしい) \n" +
                     "Indecisive, timid, vain";
-        }
-        if (zodiac.equals("猿")){
+        } else if (zodiac.equals("猿")){
+            // Zodiac is monkey
             zodiacNm = "猿 (さる)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 一, 七 , 八\n" + "ラッキーカラー: しろ, 金, あお\n" + "吉方 (えほう): 北, 北西, 西";
             zodiacStngandWeak =
@@ -850,8 +867,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "嫉妬深いです (しっとぶかいです), 狡い (こすい), 傲慢な (ごうまんな) \n" +
                     "Jealous, cunning, arrogant";
-        }
-        if (zodiac.equals("おんどり")){
+        } else if (zodiac.equals("おんどり")){
+            // Zodiac is rooster
             zodiacNm = "雄鳥 (おんどり)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 五, 七, 八\n" + "ラッキーカラー: 金, ちゃい, きいろ\n" + "吉方 (えほう): 西, 南西, 北東";
             zodiacStngandWeak =
@@ -861,8 +878,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "せっかち, エキセントリック, 利己的 ( りこてき) \n" +
                     "Impatient, eccentric, selfish";
-        }
-        if (zodiac.equals("犬")){
+        } else if (zodiac.equals("犬")){
+            // Zodiac is dog
             zodiacNm = "犬 (いぬ)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 三, 四 , 九\n" + "ラッキーカラー: みどり, あか, むらさき\n" + "吉方 (えほう): 東, 南西, 南";
             zodiacStngandWeak =
@@ -872,8 +889,8 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "弱点 (じゃくてん): \n" +
                     "敏感 (びんかん), 頑固な (がんこな), 感情の (かんじょうの) \n" +
                     "Sensitive, stubborn, emotional";
-        }
-        if (zodiac.equals("豚")){
+        } else if (zodiac.equals("豚")){
+            // Zodiac is pig
             zodiacNm = "豚 (ぶた)";
             zodiacLuck = "幸運の数字 (こうんのすうじ): 二, 五, 八\n" + "ラッキーカラー: きいろ, ねずみ/はい, ちゃい, 金\n" + "吉方 (えほう): 南東, 北東";
             zodiacStngandWeak =
@@ -885,8 +902,7 @@ public class ChineseHoroscope extends AppCompatActivity {
                     "Naive, gullible, short-tempered";
         }
 
-        //////////////////////////////////////////
-
+        // Display resulting horoscope
         TextView zodiacName = (TextView) findViewById(R.id.zodiacName);
         zodiacName.setText(zodiacNm);
         TextView luck = (TextView) findViewById(R.id.luck);
